@@ -4,7 +4,7 @@ A clean, responsive, login page modal built with HTML and CSS.
 
 Features
 
-- Beautiful modal design
+- Sweet and Beautiful modal design
 - Password visibility toggle (👁️)
 - Social login buttons (Google & Facebook)
 - Responsive on mobile and desktop

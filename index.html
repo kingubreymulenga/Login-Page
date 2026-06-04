@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            
+            <h2>OBBY MULENGA</h2>
+            <p class="subtitle">Sign in to your account</p>
+
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div id="error-message" class="error-message"></div>
+
+                <div class="input-group">
+                    <label for="email">Email or Phone</label>
+                    <input type="text" id="email" placeholder="Enter email or phone" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" placeholder="Enter password" required>
+                        <span class="toggle-password" onclick="togglePassword()">👁️</span>
+                    </div>
+                </div>
+
+                <div class="options">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" onclick="forgotPassword()">Forgot Password?</a>
+                </div>
+
+                <button type="submit" id="loginBtn" class="login-submit-btn">Login</button>
+            </form>
+
+            <div class="social-login">
+                <p class="divider"><span>OR</span></p>
+                <button class="social-btn google-btn">Continue with Google</button>
+                <button class="social-btn facebook-btn">Continue with Facebook</button>
+            </div>
+
+            <p class="signup-link">
+                Don't have an account? 
+                <a href="#" onclick="closeLoginModal()">Sign Up</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const toggleIcon = document.querySelector('.toggle-password');
+            
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.textContent = "🙈";
+            } else {
+                passwordField.type = "password";
+                toggleIcon.textContent = "👁️";
+            }
+        }
+        function handleLogin(event) {
+            event.preventDefault();
+            const loginBtn = document.getElementById('loginBtn');
+            const errorMsg = document.getElementById('error-message');
+            
+            loginBtn.innerHTML = 'Logging in...';
+            loginBtn.disabled = true;
+            
+            setTimeout(() => {
+                errorMsg.textContent = "Login successful! 🎉";
+                errorMsg.classList.add('success');
+                
+                setTimeout(() => {
+                    closeLoginModal();
+                }, 1500);
+            }, 1500);
+        }
+
+        function forgotPassword() {
+            alert("Forgot password feature coming soon!");
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        window.onload = () => {
+            document.getElementById('loginModal').style.display = 'flex';
+        };
+    </script>
+
+</body>
+</html>
